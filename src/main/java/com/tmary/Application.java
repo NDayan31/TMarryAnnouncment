@@ -13,6 +13,8 @@ public class Application {
     static SimpleDateFormat dayFormat = new SimpleDateFormat("E");
 
     public static void main(String[] args) {
+        // Collects data from ExcelDataManager
+
         // displays today's date
         String formattedDate = fmt.format(today);
         System.out.println("Today is: " + formattedDate);
