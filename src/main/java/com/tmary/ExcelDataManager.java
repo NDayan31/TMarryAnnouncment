@@ -22,7 +22,7 @@ public class ExcelDataManager {
         int rowMax = sheet.getLastRowNum();
         int columnMax = sheet.getRow(0).getLastCellNum();
 
-        for (int r = 4; r < rowMax; r++) {
+        for (int r = 3; r < rowMax; r++) {
             Row entry = sheet.getRow(r);
 
             int id = 0;
@@ -46,9 +46,9 @@ public class ExcelDataManager {
                     case 3:
                         weekNumber = (int) cell.getNumericCellValue();
                 }
-                Members member = new Members(id, name, dateOfBirth, weekNumber);
-                Application.membersList.add(member);
             }
+            Members member = new Members(id, name, dateOfBirth, weekNumber);
+            Application.membersList.add(member);
         }
     }
 }

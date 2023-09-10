@@ -14,7 +14,7 @@ public class Application {
     static Date today = new Date();
     static SimpleDateFormat fmt = new SimpleDateFormat("E, MM/dd/yyyy");
     static SimpleDateFormat dayFormat = new SimpleDateFormat("E");
-    static ArrayList <Members> membersList = new ArrayList<>();
+    static ArrayList<Members> membersList = new ArrayList<>();
 
     public static void main(String[] args) throws IOException {
         // Collects data from ExcelDataManager
@@ -29,14 +29,15 @@ public class Application {
         Date[] range = dateRange();
 
         // Displays the range
+        System.out.println("\nSpecial Announcements for the Following Dates:");
         for (Date date : range) {
-            System.out.println(date);
+            System.out.println("\t" + fmt.format(date));
         }
-
-
+        birthdayAnnouncement();
     }
 
-    public void weeklyAnnouncement () {
+
+    public static void birthdayAnnouncement () {
         //searches array list of Members in said range
         List<Members> birthday = new ArrayList<>();
         Date[] range = dateRange();
@@ -47,7 +48,10 @@ public class Application {
             }
             i++;
         }
-
+        System.out.println("\nWe wish a Happy Birthday to the following:");
+        for (Members members : birthday) {
+            System.out.println("\t" + members.toString());
+        }
     }
 
     public static Date[] dateRange () {
