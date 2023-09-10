@@ -11,8 +11,7 @@ import java.util.Date;
 
 public class ExcelDataManager {
 
-    public Members getMembers() throws IOException {
-        Members member = null;
+    public void getMembers() throws IOException {
 
         // access the Excel file
         String path = "/Users/nadavdayan/Desktop/Oracle Certification/Java/Documents/Worksheet in Ex-1-Birthday-Listings.xlsx";
@@ -26,13 +25,14 @@ public class ExcelDataManager {
         for (int r = 4; r < rowMax; r++) {
             Row entry = sheet.getRow(r);
 
-            for (int c = 0; c < columnMax; c++) {
-                int id;
-                String name;
-                Date dateOfBirth;
-                int weekNumber;
+            int id = 0;
+            String name = "";
+            Date dateOfBirth = null;
+            int weekNumber = 0;
 
+            for (int c = 0; c < columnMax; c++) {
                 Cell cell = entry.getCell(c);
+
                 switch (c) {
                     case 0:
                         id = (int) cell.getNumericCellValue();
@@ -46,12 +46,12 @@ public class ExcelDataManager {
                     case 3:
                         weekNumber = (int) cell.getNumericCellValue();
                 }
-
+                Members member = new Members(id, name, dateOfBirth, weekNumber);
+                Application.membersList.add(member);
             }
         }
 
 
         // declare cells as variables
-        return member;
     }
 }

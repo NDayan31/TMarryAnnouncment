@@ -1,6 +1,7 @@
 package com.tmary;
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 
@@ -11,6 +12,7 @@ public class Application {
     static Date today = new Date();
     static SimpleDateFormat fmt = new SimpleDateFormat("E, MM/dd/yyyy");
     static SimpleDateFormat dayFormat = new SimpleDateFormat("E");
+    static ArrayList <Members> membersList = new ArrayList<>();
 
     public static void main(String[] args) {
         // Collects data from ExcelDataManager
