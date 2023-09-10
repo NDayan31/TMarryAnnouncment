@@ -50,8 +50,5 @@ public class ExcelDataManager {
                 Application.membersList.add(member);
             }
         }
-
-
-        // declare cells as variables
     }
 }

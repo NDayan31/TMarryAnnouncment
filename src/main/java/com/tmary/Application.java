@@ -1,9 +1,11 @@
 package com.tmary;
 
+import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.List;
 
 public class Application {
 
@@ -14,8 +16,10 @@ public class Application {
     static SimpleDateFormat dayFormat = new SimpleDateFormat("E");
     static ArrayList <Members> membersList = new ArrayList<>();
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
         // Collects data from ExcelDataManager
+        ExcelDataManager excelDataManager = new ExcelDataManager();
+        excelDataManager.getMembers();
 
         // displays today's date
         String formattedDate = fmt.format(today);
@@ -29,7 +33,20 @@ public class Application {
             System.out.println(date);
         }
 
+
+    }
+
+    public void weeklyAnnouncement () {
         //searches array list of Members in said range
+        List<Members> birthday = new ArrayList<>();
+        Date[] range = dateRange();
+        int i = 0;
+        for (Members members : membersList) {
+            if (members.getDateOfBirth().after(range[0]) && members.getDateOfBirth().before(range[1])) {
+                birthday.add(membersList.get(i));
+            }
+            i++;
+        }
 
     }
 
