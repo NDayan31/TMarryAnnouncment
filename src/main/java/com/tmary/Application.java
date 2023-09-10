@@ -48,6 +48,11 @@ public class Application {
             }
             i++;
         }
+        // Displays a message if no birthdays last week, ends method after
+        if (birthday.size() == 0) {
+            System.out.println("\nThere are no birthday's today.");
+            return;
+        }
         System.out.println("\nWe wish a Happy Birthday to the following:");
         for (Members members : birthday) {
             System.out.println("\t" + members.toString());
@@ -67,9 +72,7 @@ public class Application {
                 calendar.add(Calendar.DAY_OF_YEAR, -1);
                 Date referecnceDate = calendar.getTime();
                 dayOfWeek = dayFormat.format(referecnceDate);
-
             }
-
         }
         // adds the previous Saturday and Sunday to the Array
         calendar.add(Calendar.DAY_OF_YEAR,-1);

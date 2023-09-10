@@ -6,7 +6,6 @@ import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import java.io.FileInputStream;
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.Date;
 
 public class ExcelDataManager {
@@ -24,7 +23,6 @@ public class ExcelDataManager {
 
         for (int r = 3; r < rowMax; r++) {
             Row entry = sheet.getRow(r);
-
             int id = 0;
             String name = "";
             Date dateOfBirth = null;
@@ -32,19 +30,11 @@ public class ExcelDataManager {
 
             for (int c = 0; c < columnMax; c++) {
                 Cell cell = entry.getCell(c);
-
                 switch (c) {
-                    case 0:
-                        id = (int) cell.getNumericCellValue();
-                        break;
-                    case 1:
-                        name = cell.getStringCellValue();
-                        break;
-                    case 2:
-                        dateOfBirth = cell.getDateCellValue();
-                        break;
-                    case 3:
-                        weekNumber = (int) cell.getNumericCellValue();
+                    case 0 -> id = (int) cell.getNumericCellValue();
+                    case 1 -> name = cell.getStringCellValue();
+                    case 2 -> dateOfBirth = cell.getDateCellValue();
+                    case 3 -> weekNumber = (int) cell.getNumericCellValue();
                 }
             }
             Members member = new Members(id, name, dateOfBirth, weekNumber);
