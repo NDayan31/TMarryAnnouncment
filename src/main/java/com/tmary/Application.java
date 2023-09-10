@@ -6,39 +6,37 @@ import java.util.Date;
 
 public class Application {
 
+    /* creates a global variable for today's date as well as the formatter
+    used in the application */
     static Date today = new Date();
     static SimpleDateFormat fmt = new SimpleDateFormat("E, MM/dd/yyyy");
     static SimpleDateFormat dayFormat = new SimpleDateFormat("E");
 
     public static void main(String[] args) {
-        //runs today's date and determines the range of events
+        // displays today's date
         String formattedDate = fmt.format(today);
         System.out.println("Today is: " + formattedDate);
 
+        // references today's date to determine the range of the search
         Date[] range = dateRange();
 
-        for (int i = 0; i < range.length; i++){
-            System.out.println(range[i]);
+        // Displays the range
+        for (Date date : range) {
+            System.out.println(date);
         }
-
-        /*Calendar calendar = Calendar.getInstance();
-        calendar.add(Calendar.DAY_OF_YEAR,-1);
-        Date yesterday = calendar.getTime();
-        String yesterdayFormatted = fmt.format(yesterday);
-        System.out.println("Yesterday was: " + yesterdayFormatted);*/
 
         //searches array list of Members in said range
 
-        //Displays the range
     }
 
     public static Date[] dateRange () {
-        // returns the start date and end date in an array
+
         Date[] range = new Date[2];
         Calendar calendar = Calendar.getInstance();
         String dayOfWeek = dayFormat.format(today);
 
         // reads today's date and determines if it is a Sunday by a numerical value
+        // otherwise it subtracts the date until it is Sunday again
         if (!dayOfWeek.equalsIgnoreCase("Sun")) {
             while (!dayOfWeek.equalsIgnoreCase("Sun")) {
                 calendar.add(Calendar.DAY_OF_YEAR, -1);
@@ -48,10 +46,13 @@ public class Application {
             }
 
         }
+        // adds the previous Saturday and Sunday to the Array
         calendar.add(Calendar.DAY_OF_YEAR,-1);
-        range[0] = calendar.getTime();
-        calendar.add(Calendar.DAY_OF_YEAR,-6);
         range[1] = calendar.getTime();
+        calendar.add(Calendar.DAY_OF_YEAR,-6);
+        range[0] = calendar.getTime();
+
+        // returns the start date and end date in an array
         return range;
     }
 }
