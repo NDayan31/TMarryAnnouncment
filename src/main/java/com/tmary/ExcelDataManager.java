@@ -31,10 +31,18 @@ public class ExcelDataManager {
             for (int c = 0; c < columnMax; c++) {
                 Cell cell = entry.getCell(c);
                 switch (c) {
-                    case 0 -> id = (int) cell.getNumericCellValue();
-                    case 1 -> name = cell.getStringCellValue();
-                    case 2 -> dateOfBirth = cell.getDateCellValue();
-                    case 3 -> weekNumber = (int) cell.getNumericCellValue();
+                    case 0:
+                        id = (int) cell.getNumericCellValue();
+                        break;
+                    case 1:
+                        name = cell.getStringCellValue();
+                        break;
+                    case 2:
+                        dateOfBirth = cell.getDateCellValue();
+                        break;
+                    case 3:
+                        weekNumber = (int) cell.getNumericCellValue();
+                        break;
                 }
             }
             Members member = new Members(id, name, dateOfBirth, weekNumber);
